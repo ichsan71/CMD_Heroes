@@ -67,7 +67,7 @@ begin
                       write('*Tips : Upgrade Power dan Health kamu agar bisa memenangkan pertarungan');
                  end;
 
-            kotak(1,5,40,20,red);
+            {kotak(1,5,40,20,red);
             WriteLn('1. Lihat Status Monster saya');
             kotak(1,7,40,20,red);
             WriteLn('2. Upgrade Power');
@@ -78,7 +78,19 @@ begin
             kotak(1,13,40,20,red);
             WriteLn('5. Keluar Game');
             kotak(1,15,40,20,red);
-            Write('Masukan Pilihan mu : ');readln(pilihan);
+            Write('Masukan Pilihan mu : ');readln(pilihan);}
+            //edit
+            kotak(1,5,40,20,red);
+            begin
+                 WriteLn('1. Lihat Status Monster saya');
+                 WriteLn('2. Upgrade Power');
+                 WriteLn('3. Upgrade Health');
+                 Writeln('4. Lawan Monster lain');
+                 WriteLn('5. Keluar Game');
+                 Write('Masukan Pilihan mu : ');readln(pilihan);
+            end;
+
+
 
             
             if pilihan=1 then
