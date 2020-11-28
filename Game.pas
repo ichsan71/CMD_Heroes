@@ -39,11 +39,11 @@ var
   //n:string;
 
 begin
-      kotak(1,1,80,4,cyan);
+      kotak(1,1,80,3,cyan);
       writeln('---------------------------------GAME MONSTER---------------------------------');
-      kotak(1,5,40,20,blue);
+      kotak(1,4,40,6,blue);
       Write('Masukan Nama Monster anda : ');ReadLn(hero);
-      kotak(41,5,80,20,blue);
+      kotak(41,4,80,22,blue);
       WriteLn('Halo... ',hero);
 
 
@@ -53,44 +53,48 @@ begin
       health:=200;
       x:=0;
       repeat
+            kotak(1,1,80,3,cyan);
+            writeln('---------------------------------GAME MONSTER---------------------------------');
             //KOTAK TIPS
             randomize;
             tips:=random(2);
             if tips=0 then
                begin
-                    kotak(1,21,80,23,cyan);
+                    kotak(1,22,80,24,cyan);
                     write('*Tips : Kegunaan Coin adalah untuk mengupgrade Power dan Health Monster Mu');
                end
             else if tips=1 then
                  begin
-                      kotak(1,21,80,23,cyan);
+                      kotak(1,22,80,24,cyan);
                       write('*Tips : Upgrade Power dan Health kamu agar bisa memenangkan pertarungan');
                  end;
 
-            kotak(1,5,40,20,red);
+            kotak(1,4,40,6,red);
             WriteLn('1. Lihat Status Monster saya');
-            kotak(1,7,40,20,red);
+            kotak(1,7,40,9,red);
             WriteLn('2. Upgrade Power');
-            kotak(1,9,40,20,red);
+            kotak(1,10,40,12,red);
             WriteLn('3. Upgrade Health');
-            kotak(1,11,40,20,red);
+            kotak(1,13,40,15,red);
             writeln('4. Lawan Monster lain');
-            kotak(1,13,40,20,red);
+            kotak(1,16,40,18,red);
             WriteLn('5. Keluar Game');
-            kotak(1,15,40,20,red);
+            kotak(1,19,40,21,red);
             Write('Masukan Pilihan mu : ');readln(pilihan);
 
             
             if pilihan=1 then
               begin
-                kotak(41,5,80,20,blue);
+                kotak(41,4,80,6,blue);
                 writeln('Nama Monster : ',hero);
-                kotak(41,7,80,20,blue);
+                kotak(41,7,80,9,blue);
                 writeLn('Power : ', power,' Health : ', health);
-                kotak(41,9,80,20,blue);
+                kotak(41,10,80,12,blue);
                 writeln('Coin upgrade : ',x);
-                //readln;
-                //clrscr;
+                kotak(41,13,80,15,blue);
+                writeln('Tekan ENTER untuk melanjutkan...');
+                readln;
+                clrscr;
               end
             else if pilihan=4 then
               //ini Monster komputer
@@ -103,73 +107,85 @@ begin
                   monster:='Garong';
                   mp:=100;
                   mh:=100;
-                  kotak(41,5,80,20,blue);
-                  write('Kamu Melawan ', monster);
-                  kotak(41,7,80,20,blue);
-                  write('Power : ',mp);
-                  kotak(41,9,80,20,blue);
-                  write('Health : ',mh);
+                  kotak(41,4,80,6,blue);
+                  write('Kamu Melawan ', monster);delay(100);
+                  kotak(41,7,80,9,blue);
+                  write('Power : ',mp);delay(100);
+                  kotak(41,10,80,12,blue);
+                  write('Health : ',mh); delay(100);
+                  kotak(41,13,80,15,blue);
+                  writeln('Tekan ENTER untuk melanjutkan...');
                   readln;
-                  //clrscr;
+                  clrscr;
                 end 
               else if Pmonster=1 then
                 begin
                   monster:='Oren';
                   mp:=200;
                   mh:=300;
-                  kotak(41,5,80,20,blue);
-                  write('Kamu Melawan ', monster);
-                  kotak(41,7,80,20,blue);
-                  write('Power : ',mp);
-                  kotak(41,9,80,20,blue);
-                  write('Health : ',mh);
+                  kotak(41,4,80,6,blue);
+                  write('Kamu Melawan ', monster);delay(100);
+                  kotak(41,7,80,9,blue);
+                  write('Power : ',mp);delay(100);
+                  kotak(41,10,80,12,blue);
+                  write('Health : ',mh);delay(100);
+                  kotak(41,13,80,15,blue);
+                  writeln('Tekan ENTER untuk melanjutkan...');
                   readln;
-                  //clrscr;
+                  clrscr;
                 end
               else if Pmonster=2 then
                 begin
                   monster:='belang';
                   mp:=300;
                   mh:=400;
-                  kotak(41,5,80,20,blue);
-                  write('Kamu Melawan ', monster);
-                  kotak(41,7,80,20,blue);
-                  write('Power : ',mp);
-                  kotak(41,9,80,20,blue);
-                  write('Health : ',mh);
+                  kotak(41,4,80,6,blue);
+                  write('Kamu Melawan ', monster);delay(100);
+                  kotak(41,7,80,9,blue);
+                  write('Power : ',mp);delay(100);
+                  kotak(41,10,80,12,blue);
+                  write('Health : ',mh);delay(100);
+                  kotak(41,13,80,15,blue);
+                  writeln('Tekan ENTER untuk melanjutkan...');
                   readln;
-                  //clrscr;
+                  clrscr;
                 end;
                hasil:=power-mh;
                     if hasil>=0 then
                       begin
                         x:=x+1;
-                        kotak(41,5,80,20,blue);
-                        writeln(hero,': ', power,', ',health,' Vs ',monster,': ', mp,', ',mh);
-                        kotak(41,7,80,20,blue);
-                        writeln('Yeay Kamu Menang');
-                        kotak(41,9,80,20,blue);
-                        writeln('Horee dapat 1 coin upgrade');
-                        //readln;
-                        //clrscr;
+                        kotak(20,4,55,6,blue);
+                        write(hero,': ', power,', ',health,' Vs ',monster,': ', mp,', ',mh);delay(100);
+                        kotak(20,7,55,9,blue);
+                        write('Yeay Kamu Menang');delay(100);
+                        kotak(20,10,55,12,blue);
+                        write('Horee dapat 1 coin upgrade');delay(100);
+                        kotak(20,13,55,15,blue);
+                        writeln('Tekan ENTER untuk melanjutkan...');
+                        readln;
+                        clrscr;
                       end
                     else if (power=mp) and (health=mh) then
                          begin
-                              kotak(41,5,80,20,blue);
-                              writeln(hero,': ', power,', ',health,' Vs ',monster,': ', mp,', ',mh);
-                              kotak(41,7,80,20,blue);
-                              writeln('Seri!');
-                              //readln;
-                              //clrscr;
+                              kotak(20,4,55,6,blue);
+                              write(hero,': ', power,', ',health,' Vs ',monster,': ', mp,', ',mh);delay(100);
+                              kotak(20,7,55,9,blue);
+                              write('Seri!');delay(100);
+                              kotak(20,13,55,15,blue);
+                              write('Tekan ENTER untuk melanjutkan...');delay(100);
+                              readln;
+                              clrscr;
                          end
                     else
                       begin
-                           kotak(41,5,80,20,blue);
-                           writeln(hero,': ', power,', ',health,' Vs ',monster,': ', mp,', ',mh);
-                           kotak(41,7,80,20,blue);
-                           writeln('Yahh kamu kalah');
-                           //readln;
-                           //clrscr;
+                           kotak(20,4,55,6,blue);
+                           write(hero,': ', power,', ',health,' Vs ',monster,': ', mp,', ',mh);delay(100);
+                           kotak(20,7,55,9,blue);
+                           write('Yahh kamu kalah');delay(100);
+                           kotak(20,13,55,15,blue);
+                           write('Tekan ENTER untuk melanjutkan...');delay(100);
+                           readln;
+                           clrscr;
                       end
 
                 end
@@ -177,19 +193,23 @@ begin
               begin
                    if x>0 then
                 begin
-                     kotak(41,5,80,20,blue);
+                     kotak(41,4,80,6,blue);
                      health:=health+100;
                      writeln('Monster kamu bertambah health ',health);
                      x:=x-1;
-                     //readln;
-                     //clrscr;
+                     kotak(41,7,80,9,blue);
+                     writeln('Tekan ENTER untuk melanjutkan...');
+                     readln;
+                     clrscr;
                 end
                 else
                   begin
-                       kotak(41,5,80,20,blue);
+                       kotak(41,4,80,6,blue);
                        writeln('Kamu Harus mengalahkan Monster dulu');
-                       //readln;
-                       //clrscr;
+                       kotak(41,7,80,9,blue);
+                       writeln('Tekan ENTER untuk melanjutkan...');
+                       readln;
+                       clrscr;
                   end;
 
               end
@@ -198,35 +218,39 @@ begin
                 if x>0 then
                 begin
                      power:=power+100;
-                     kotak(41,5,80,20,blue);
+                     kotak(41,4,80,6,blue);
                      writeln('Monster kamu bertambah power ',power);
                      x:=x-1;
-                     //readln;
-                     //clrscr;
+                     kotak(41,7,80,9,blue);
+                     writeln('Tekan ENTER untuk melanjutkan...');
+                     readln;
+                     clrscr;
                 end
                 else
                   begin
-                       kotak(41,5,80,20,blue);
+                       kotak(41,4,80,6,blue);
                        writeln('Kamu Harus mengalahkan Monster dulu');
-                       //readln;
-                       //clrscr;
+                       kotak(41,7,80,9,blue);
+                       writeln('Tekan ENTER untuk melanjutkan...');
+                       readln;
+                       clrscr;
                   end;
               end
             else
                 begin
-                     kotak(41,5,80,20,blue);
+                     kotak(41,4,80,6,blue);
                      write('Apakah Kamu Yakin Ingin Keluar?[Y/N] ');readln(ex);
                      //clrscr;
                      ex:=upcase(ex);
                      if ex='Y' then
                         begin
                              pilihan:=5;
-                             kotak(41,5,80,20,blue);
+                             kotak(41,4,80,6,blue);
                              writeln('Dadahh');
                         end
                      else
                          begin
-                              kotak(41,5,80,20,blue);
+                              kotak(41,4,80,6,blue);
                               writeln('Cie galau');
                               pilihan:=1;
                          end;
