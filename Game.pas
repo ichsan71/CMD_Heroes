@@ -35,7 +35,7 @@ end; // end of procedure
 
 var 
   hero,monster,ex:String;
-  i,x,pilihan,power,health,mp,Pmonster,mh,hasil,tips,j:Integer;
+  x,pilihan,power,health,mp,Pmonster,mh,hasil,tips:Integer;
   //n:string;
 
 begin
@@ -86,13 +86,13 @@ begin
             if pilihan=1 then
               begin
                 kotak(41,4,80,6,blue);
-                writeln('Nama Monster : ',hero);
+                writeln('Nama Monster : ',hero);delay(100);
                 kotak(41,7,80,9,blue);
-                writeLn('Power : ', power,' Health : ', health);
+                writeLn('Power : ', power,' Health : ', health);delay(100);
                 kotak(41,10,80,12,blue);
-                writeln('Coin upgrade : ',x);
+                writeln('Coin upgrade : ',x);delay(100);
                 kotak(41,13,80,15,blue);
-                writeln('Tekan ENTER untuk melanjutkan...');
+                write('Tekan ENTER untuk melanjutkan...');delay(100);
                 readln;
                 clrscr;
               end
@@ -114,7 +114,7 @@ begin
                   kotak(41,10,80,12,blue);
                   write('Health : ',mh); delay(100);
                   kotak(41,13,80,15,blue);
-                  writeln('Tekan ENTER untuk melanjutkan...');
+                  write('Tekan ENTER untuk melanjutkan...');
                   readln;
                   clrscr;
                 end 
@@ -130,7 +130,7 @@ begin
                   kotak(41,10,80,12,blue);
                   write('Health : ',mh);delay(100);
                   kotak(41,13,80,15,blue);
-                  writeln('Tekan ENTER untuk melanjutkan...');
+                  write('Tekan ENTER untuk melanjutkan...');
                   readln;
                   clrscr;
                 end
@@ -146,7 +146,7 @@ begin
                   kotak(41,10,80,12,blue);
                   write('Health : ',mh);delay(100);
                   kotak(41,13,80,15,blue);
-                  writeln('Tekan ENTER untuk melanjutkan...');
+                  write('Tekan ENTER untuk melanjutkan...');
                   readln;
                   clrscr;
                 end;
@@ -198,7 +198,7 @@ begin
                      writeln('Monster kamu bertambah health ',health);
                      x:=x-1;
                      kotak(41,7,80,9,blue);
-                     writeln('Tekan ENTER untuk melanjutkan...');
+                     write('Tekan ENTER untuk melanjutkan...');
                      readln;
                      clrscr;
                 end
@@ -207,7 +207,7 @@ begin
                        kotak(41,4,80,6,blue);
                        writeln('Kamu Harus mengalahkan Monster dulu');
                        kotak(41,7,80,9,blue);
-                       writeln('Tekan ENTER untuk melanjutkan...');
+                       write('Tekan ENTER untuk melanjutkan...');
                        readln;
                        clrscr;
                   end;
@@ -222,7 +222,7 @@ begin
                      writeln('Monster kamu bertambah power ',power);
                      x:=x-1;
                      kotak(41,7,80,9,blue);
-                     writeln('Tekan ENTER untuk melanjutkan...');
+                     write('Tekan ENTER untuk melanjutkan...');
                      readln;
                      clrscr;
                 end
@@ -231,7 +231,7 @@ begin
                        kotak(41,4,80,6,blue);
                        writeln('Kamu Harus mengalahkan Monster dulu');
                        kotak(41,7,80,9,blue);
-                       writeln('Tekan ENTER untuk melanjutkan...');
+                       write('Tekan ENTER untuk melanjutkan...');
                        readln;
                        clrscr;
                   end;
