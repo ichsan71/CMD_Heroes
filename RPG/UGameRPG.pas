@@ -146,7 +146,10 @@ var
 
 
 begin
-     repeat
+     kotak(1,1,80,25,yellow);
+     clrscr;
+     
+     repeat//repeat pilihan hero
      clrscr;
 
      //pilihan role hero
@@ -243,8 +246,9 @@ begin
           kotak(31,20,80,22,cyan);
           write('Apakah Kamu yakin memilih Hero ini? [Y/N] : ');readln(pilihan_H);
           pilihan_H:=upcase(pilihan_H);
-    until pilihan_H='Y';
+    until pilihan_H='Y';//repeat pilihan hero
 
+repeat //repeat menu
     //Menu
     clrscr;
     kotak(20,1,60,3,cyan);
@@ -418,7 +422,7 @@ begin
 
 
                 until (health_H=0) or (health_B=0);
-       end
+       end //end of pilihan menu = 1
        else if pilihan_M=2 then
             begin
                  clrscr;
@@ -432,16 +436,20 @@ begin
                  writeln('Damage Skill 2   :',skill_2h);
                  kotak(20,13,60,15,cyan);
                  writeln('Damage Skill 3   :',skill_3h);
-                 kotak(20,23,60,25,cyan);
+                 kotak(20,16,60,18,cyan);
                  writeln('*Tips Upgrade Hero Mu Agar Lebih Kuat:)');
-            end;
+                 kotak(20,19,60,21,cyan);
+                 write('Tekan Enter Untuk Melanjutkan...');
+                 readln;
+                 clrscr;
+       end; //end of pilihan menu = 2
 
       {else if pilihan_M=3 then
            begin
 
            end;}
 
-
+until pilihan_M=4; //repeat pilihan menu
 
 readln;
 end.
