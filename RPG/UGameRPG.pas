@@ -178,8 +178,15 @@ begin
 end; // End of procedure 2
 
 begin
+
      { INI BODY DARI FILE UTAMA}
      repeat
+
+     kotak(1,1,80,25,yellow);
+     clrscr;
+     
+     repeat//repeat pilihan hero
+
      clrscr;
 
      //pilihan role hero
@@ -276,9 +283,16 @@ begin
           kotak(31,20,80,22,cyan);
           write('Apakah Kamu yakin memilih Hero ini? [Y/N] : ');readln(pilihan_H);
           pilihan_H:=upcase(pilihan_H);
+
     until (pilihan_H='Y') and (hero>0);
 
     {MENU GAME}
+
+    until pilihan_H='Y';//repeat pilihan hero
+
+repeat //repeat menu
+    //Menu
+
     clrscr;
     kotak(20,1,60,3,cyan);
     writeln('_Selamat Datang ',nama_hero,' di CMD Heroes_');
@@ -558,6 +572,7 @@ begin
                                           end;
                                  end
 
+
                               else if (hero=2) and (turn=2) then
                                    begin
                                         kotak(2,5,35,7,yellow);
@@ -662,11 +677,36 @@ begin
                 until (Health_h<=0) or (Health_b<=0);
                 writeln('Pertempuran telah berakhir');
                 readln;
-       end;
+
        //else if pilihan_M=2
+       end //end of pilihan menu = 1
+       else if pilihan_M=2 then
+            begin
+                 clrscr;
+                 kotak(20,1,60,3,cyan);
+                 writeln('____________Your Hero Status___________');
+                 kotak(20,4,60,6,cyan);
+                 writeln('Health           :',Health_h);
+                 kotak(20,7,60,9,cyan);
+                 writeln('Damage Skill 1   :',skill_1h);
+                 kotak(20,10,60,12,cyan);
+                 writeln('Damage Skill 2   :',skill_2h);
+                 kotak(20,13,60,15,cyan);
+                 writeln('Damage Skill 3   :',skill_3h);
+                 kotak(20,16,60,18,cyan);
+                 writeln('*Tips Upgrade Hero Mu Agar Lebih Kuat:)');
+                 kotak(20,19,60,21,cyan);
+                 write('Tekan Enter Untuk Melanjutkan...');
+                 readln;
+                 clrscr;
+       end; //end of pilihan menu = 2
 
+      {else if pilihan_M=3 then
+           begin
 
+           end;}
 
+until pilihan_M=4; //repeat pilihan menu
 
 readln;
 end.
