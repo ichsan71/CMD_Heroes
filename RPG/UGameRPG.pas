@@ -32,29 +32,56 @@ begin
           gotoxy(x1,i);write(#179);
      end;
 
-end; // end of procedure
+end; // end of procedure 1
+
+var
+   { INI ADALAH VAR DARI FILE UTAMA }
+
+   //var User
+   nama_hero:string;
+   pilihan_GBK:char;
+   pilihan_H:char;
+   pilihan_M,hero,pilih_sk:byte;
+   Health_h,skill_1h,skill_2h,skill_3h:integer;
+   turn:byte;
+
+   //var bot
+   Health_b,skill_1b,skill_2b,skill_3b:integer;
+   random_skill_bot,H_bot:byte;
+   hero_b:string;
 
 //procedure Gunting kertas Batu
-procedure GBK(Pplayer:string);
+procedure GBK(Pplayer:char);
 var
-   Pcom:string;
-   angka,turn:integer;
+   {INI VAR PROCEDURE 2}
+   Pcom:char;
+   angka:byte;
 begin
      repeat
 
      //Input user
-     //write('Masukan [B,G,K] : ');readln(Pplayer);
      Pplayer:=upcase(Pplayer);
 
      if Pplayer = 'B' then
-        writeln('Anda Memilih Batu')
+        begin
+             kotak(2,1,35,3,cyan);
+             writeln('Anda Memilih Batu');delay(2000);
+        end
      else if Pplayer = 'G' then
-          writeln('Anda Memilih Gunting')
+          begin
+               kotak(2,1,35,3,cyan);
+               writeln('Anda Memilih Gunting');delay(2000);
+          end
      else if Pplayer = 'K' then
-          writeln('Anda Memilih Kertas')
+          begin
+               kotak(2,1,35,3,cyan);
+               writeln('Anda Memilih Kertas');delay(2000);
+          end
      else
-         writeln('Anda Memasukan Pilihan yang salah!');
-
+         begin
+              kotak(2,1,35,3,cyan);
+              writeln('Anda Memasukan Pilihan yang salah!');delay(2000);
+         end;
      //Pilihan Komputer
      randomize;
      angka:=random(3);
@@ -67,85 +94,91 @@ begin
          Pcom:='K';
 
      if Pcom = 'B' then
-        writeln('Komputer Memilih Batu')
+        begin
+             kotak(42,1,79,3,cyan);
+             writeln('Komputer Memilih Batu');delay(2000);
+        end
      else if Pcom = 'G' then
-          writeln('Komputer Memilih Gunting')
+          begin
+               kotak(42,1,79,3,cyan);
+               writeln('Komputer Memilih Gunting');delay(2000);
+          end
      else
-          writeln('Komputer Memilih Kertas');
+         begin
+              kotak(42,1,79,3,cyan);
+              writeln('Komputer Memilih Kertas');delay(2000);
+         end;
 
      //Peraturan
      if Pplayer = 'B' then
         if Pcom ='K' then
            begin
-                writeln('Komputer Win! Kamu Lose!, Komputer Akan Menyerang');
+                kotak(2,1,79,3,cyan);
+                writeln('Komputer Win! Kamu Lose!, Komputer Akan Menyerang');delay(5000);
                 turn:=1;
            end
         else if Pcom ='G' then
              begin
-                  writeln('Komputer Lose! Kamu Win!, Kamu Akan Menyerang');
+                  kotak(2,1,79,3,cyan);
+                  writeln('Komputer Lose! Kamu Win!, Kamu Akan Menyerang');delay(5000);
                   turn:=2;
-             end
-        else
+             end;
+        {else
             begin
+                 kotak(15,10,65,12,red);
                  writeln('DRAW!!!!');delay(100);
+                 turn:=0;
                  clrscr;
-            end;
+            end;}
       if Pplayer = 'G' then
         if Pcom ='B' then
            begin
-                writeln('Komputer Win! Kamu Lose!, Komputer Akan Menyerang');
+                kotak(2,1,79,3,cyan);
+                writeln('Komputer Win! Kamu Lose!, Komputer Akan Menyerang');delay(5000);
                 turn:=1;
            end
         else if Pcom ='K' then
              begin
-                  writeln('Komputer Lose! Kamu Win!, Kamu Akan Menyerang');
+                  kotak(2,1,79,3,cyan);
+                  writeln('Komputer Lose! Kamu Win!, Kamu Akan Menyerang');delay(5000);
                   turn:=2;
-             end
-        else
+             end;
+        {else
             begin
+                 kotak(15,10,60,12,red);
                  writeln('DRAW!!!!');delay(100);
+                 turn:=0;
                  clrscr;
-            end;
+            end;}
 
        if Pplayer = 'K' then
         if Pcom ='G' then
            begin
-                writeln('Komputer Win! Kamu Lose!, Komputer Akan Menyerang');
+                kotak(2,1,79,3,cyan);
+                writeln('Komputer Win! Kamu Lose!, Komputer Akan Menyerang');delay(5000);
                 turn:=1;
            end
         else if Pcom ='B' then
              begin
-                  writeln('Komputer Lose! Kamu Win!, Kamu Akan Menyerang');
+                  kotak(2,1,79,3,cyan);
+                  writeln('Komputer Lose! Kamu Win!, Kamu Akan Menyerang');delay(5000);
                   turn:=2;
-             end
-        else
+             end;
+        {else
             begin
+                 kotak(20,10,60,12,red);
                  writeln('DRAW!!!!');delay(100);
+                 turn:=0;
                  clrscr;
-            end;
+            end;}
+     //clrscr;
      until Pcom<>Pplayer;
-     readln;
+
 
 end; // End of procedure 2
 
-var
-   //var User
-   hero:string;
-   pilihan_GBK:char;
-   pilihan_H:char;
-   pilihan_M,turn,pilih_sk:byte;
-   Health_h,skill_1h,skill_2h,skill_3h:integer;
-   hasil:integer;
-
-   //var bot
-   Health_b,skill_1b,skill_2b,skill_3b:integer;
-   H_bot:byte;
-   hero_b:string;
-
-
-
-
 begin
+     { INI BODY DARI FILE UTAMA}
      repeat
      clrscr;
 
@@ -163,17 +196,17 @@ begin
      kotak(1,17,30,19,yellow);
      write('Pilih Hero Mu [1,2,3,4] : ');readln(hero);
 
-     //if hero
-     if hero='1' then
+     //Pilihan Hero User
+     if hero=1 then
         begin
-             hero:='Assassin';
+             nama_hero:='Assassin';
              Health_h:=300;
              skill_1h:=50;
              skill_2h:=80;
              skill_3h:=120;
 
              kotak(31,5,80,7,cyan);
-             writeln(hero,' Status');
+             writeln(nama_hero,' Status');
              kotak(31,8,80,10,cyan);
              writeln('Health        : ',Health_h);
              kotak(31,11,80,13,cyan);
@@ -183,16 +216,16 @@ begin
              kotak(31,17,80,19,cyan);
              writeln('Skill 3       : Soul eater (DMG: ',skill_3h,')');
         end
-     else if hero='2' then
+     else if hero=2 then
           begin
-               hero:='Mage';
+               nama_hero:='Mage';
                Health_h:=350;
                skill_1h:=30;
                skill_2h:=50;
                skill_3h:=80; //Nambahin health ini yaaa
 
                kotak(31,5,80,7,cyan);
-               writeln(hero,' Status');
+               writeln(nama_hero,' Status');
                kotak(31,8,80,10,cyan);
                writeln('Health      : ', Health_h);
                kotak(31,11,80,13,cyan);
@@ -202,16 +235,16 @@ begin
                kotak(31,17,80,19,cyan);
                writeln('Skill 3     : Holy Healing (HEAL: ',skill_3h,')');
           end
-     else if hero='3' then
+     else if hero=3 then
           begin
-               hero:='Archer';
+               nama_hero:='Archer';
                Health_h:=300;
                skill_1h:=45;
                skill_2h:=75;
                skill_3h:=125;
 
                kotak(31,5,80,7,cyan);
-               writeln(hero,' Status');
+               writeln(nama_hero,' Status');
                kotak(31,8,80,10,cyan);
                writeln('Health      : ', Health_h);
                kotak(31,11,80,13,cyan);
@@ -221,16 +254,16 @@ begin
                kotak(31,17,80,19,cyan);
                writeln('Skill 3     : Rain Of Arrows (DMG: ',skill_3h,')');
           end
-    else if hero='4' then
+    else if hero=4 then
           begin
-               hero:='Warrior';
+               nama_hero:='Warrior';
                Health_h:=500;
                skill_1h:=20;
                skill_2h:=40;
                skill_3h:=80;
 
                kotak(31,5,80,7,cyan);
-               writeln(hero,' Status');
+               writeln(nama_hero,' Status');
                kotak(31,8,80,10,cyan);
                writeln('Health      : ', Health_h);
                kotak(31,11,80,13,cyan);
@@ -243,12 +276,12 @@ begin
           kotak(31,20,80,22,cyan);
           write('Apakah Kamu yakin memilih Hero ini? [Y/N] : ');readln(pilihan_H);
           pilihan_H:=upcase(pilihan_H);
-    until pilihan_H='Y';
+    until (pilihan_H='Y') and (hero>0);
 
-    //Menu
+    {MENU GAME}
     clrscr;
     kotak(20,1,60,3,cyan);
-    writeln('_Selamat Datang ',hero,' di CMD Heroes_');
+    writeln('_Selamat Datang ',nama_hero,' di CMD Heroes_');
     kotak(20,4,60,6,cyan);
     writeln('1. Fight');
     kotak(20,7,60,9,cyan);
@@ -266,7 +299,7 @@ begin
               clrscr;
               randomize;
               H_bot:=random(4);
-             
+
               if H_bot=0 then
                 begin
                    hero_b:='Assasin';
@@ -275,16 +308,17 @@ begin
                    skill_2b:=80;
                    skill_3b:=120;
 
-                   kotak(25,5,65,7,cyan);
+                   kotak(20,5,60,7,cyan);
                    writeln('Kamu Melawan ',hero_b);
-                   kotak(25,8,65,10,cyan);
+                   kotak(20,8,60,10,cyan);
                    writeln('Health        : ',Health_b);
-                   kotak(25,11,65,13,cyan);
-                   writeln('Skill 1       : Execute (DMG: ',skill_1b,')');
-                   kotak(25,14,65,16,cyan);
-                   writeln('Skill 2       : Shadow Kill (DMG: ',skill_2b,')');
-                   kotak(25,17,65,19,cyan);
-                   writeln('Skill 3       : Soul eater (DMG: ',skill_3b,')');
+                   kotak(20,11,60,13,cyan);
+                   writeln('Skill 1       : Execute(DMG: ',skill_1b,')');
+                   kotak(20,14,60,16,cyan);
+                   writeln('Skill 2       : Shadow Kill(DMG: ',skill_2b,')');
+                   kotak(20,17,60,19,cyan);
+                   writeln('Skill 3       : Soul eater(DMG: ',skill_3b,')');
+
                 end 
               else if H_bot=1 then
                 begin
@@ -294,16 +328,16 @@ begin
                   skill_2b:=50;
                   skill_3b:=80; //Nambahin health ini yaaa
 
-                  kotak(25,5,65,7,cyan);
+                  kotak(20,5,60,7,cyan);
                   writeln('Kamu Melawan ',hero_b);
-                  kotak(25,8,65,10,cyan);
+                  kotak(20,8,60,10,cyan);
                   writeln('Health      : ',Health_b);
-                  kotak(25,11,65,13,cyan);
-                  writeln('Skill 1     : love waves (DMG: ',skill_1b,')');
-                  kotak(25,14,65,16,cyan);
-                  writeln('Skill 2     : Power From Nature (DMG: ',skill_2b,')');
-                  kotak(25,17,65,19,cyan);
-                  writeln('Skill 3     : Holy Healing (HEAL: ',skill_3b,')');
+                  kotak(20,11,60,13,cyan);
+                  writeln('Skill 1     : love waves(DMG: ',skill_1b,')');
+                  kotak(20,14,60,16,cyan);
+                  writeln('Skill 2     : Power Nature(DMG: ',skill_2b,')');
+                  kotak(20,17,60,19,cyan);
+                  writeln('Skill 3     : Holy Healing(HEAL: ',skill_3b,')');
                 end
               else if H_bot=2 then
                 begin
@@ -313,16 +347,16 @@ begin
                      skill_2b:=75;
                      skill_3b:=125;
 
-                     kotak(25,5,65,7,cyan);
+                     kotak(20,5,60,7,cyan);
                      writeln('Kamu Melawan ',hero_b);
-                     kotak(25,8,65,10,cyan);
+                     kotak(20,8,60,10,cyan);
                      writeln('Health      : ',Health_b);
-                     kotak(25,11,65,13,cyan);
-                     writeln('Skill 1     : Sun Arrow (DMG: ',skill_1b,')');
-                     kotak(25,14,65,16,cyan);
-                     writeln('Skill 2     : Arrow Of Sun Burst (DMG: ',skill_2b,')');
-                     kotak(25,17,65,19,cyan);
-                     writeln('Skill 3     : Rain Of Arrows (DMG: ',skill_3b,')');
+                     kotak(20,11,60,13,cyan);
+                     writeln('Skill 1     : Sun Arrow(DMG: ',skill_1b,')');
+                     kotak(20,14,60,16,cyan);
+                     writeln('Skill 2     : Sun Burst Arrow(DMG: ',skill_2b,')');
+                     kotak(20,17,60,19,cyan);
+                     writeln('Skill 3     : Rain Of Arrows(DMG: ',skill_3b,')');
 
                 end
                 else if H_bot=3 then
@@ -333,91 +367,301 @@ begin
                      skill_2b:=40;
                      skill_3b:=80;
 
-                     kotak(25,5,65,7,cyan);
+                     kotak(20,5,60,7,cyan);
                      writeln('Kamu Melawan ', hero_b);
-                     kotak(25,8,65,10,cyan);
+                     kotak(20,8,60,10,cyan);
                      writeln('Health      : ',health_b);
-                     kotak(25,11,65,13,cyan);
-                     writeln('Skill 1     : Whirling Slash (DMG: ',skill_1b,')');
-                     kotak(25,14,65,16,cyan);
-                     writeln('Skill 2     : Dual Sword (DMG: ',skill_2b,')');
-                     kotak(25,17,65,19,cyan);
-                     writeln('Skill 3     : Heavy Sword (DMG: ',skill_3b,')');
+                     kotak(20,11,60,13,cyan);
+                     writeln('Skill 1     : Whirling Slash(DMG: ',skill_1b,')');
+                     kotak(20,14,60,16,cyan);
+                     writeln('Skill 2     : Dual Sword(DMG: ',skill_2b,')');
+                     kotak(20,17,60,19,cyan);
+                     writeln('Skill 3     : Heavy Sword(DMG: ',skill_3b,')');
                 end;
-                kotak(25,20,65,22,cyan);
+                kotak(20,20,60,22,cyan);
                 write('Tekan Enter Untuk Melanjutkan...');readln;
 
                 clrscr;
-                //mulai fight
+
+                {MULAI FIGHT}
                 repeat
+                      kotak(2,1,35,3,cyan);
                       write('Masukan Pilihan [G,B,K] : ');readln(pilihan_GBK);
                       GBK(pilihan_GBK);
 
-                      //Turn
-                      if (turn=2) then
+                      //Turn dan random skill Hero Bot
+                      if (H_bot=0) and (turn=1)  then
                          begin
-                              //Pilih skill Hero
-                              if hero='1' then
+                              randomize;
+                              random_skill_bot:=random(3);delay(1000);
+
+                              kotak(42,5,79,7,yellow);
+                              writeln(hero_b);
+                              kotak(42,8,79,10,yellow);
+                              writeln('1. Execute     (DMG: ',skill_1b,')');
+                              kotak(42,11,79,13,yellow);
+                              writeln('2. Shadow Kill (DMG: ',skill_2b,')');
+                              kotak(42,14,79,16,yellow);
+                              writeln('3. Soul eater  (DMG: ',skill_3b,')');
+
+
+
+                              if random_skill_bot=0 then
                                  begin
-                                      writeln('1. Skill 1       : Execute (DMG: ',skill_1h,')');
-                                      writeln('1. Skill 2       : Shadow Kill (DMG: ',skill_2h,')');
-                                      writeln('1. Skill 3       : Soul eater (DMG: ',skill_3h,')');
-                                      writeln('Pilih Skill Untuk Menyerang! [1,2,3] : ');readln(pilih_sk);
+                                      random_skill_bot:=1;
+                                      Health_h:=Health_h-skill_1b;
+                                 end
+                              else if random_skill_bot=1 then
+                                   begin
+                                        random_skill_bot:=2;
+                                        Health_h:=Health_h-skill_2b;
+                                   end
+                              else if random_skill_bot=2 then
+                                   begin
+                                        random_skill_bot:=3;
+                                        Health_h:=Health_h-skill_3b;
+                                   end;
+                              kotak(42,17,79,19,yellow);
+                              writeln('Bot Memilih skill ',random_skill_bot);
+                         end
+
+                      else if (H_bot=1) and (turn=1)  then
+                         begin
+                              randomize;
+                              random_skill_bot:=random(3);delay(1000);
+
+                              kotak(42,5,79,7,yellow);
+                              writeln('Kamu Melawan ',hero_b);
+                              kotak(42,8,79,10,yellow);
+                              writeln('1. love waves        (DMG: ',skill_1b,')');
+                              kotak(42,11,13,13,yellow);
+                              writeln('2. Power From Nature (DMG: ',skill_2b,')');
+                              kotak(42,14,79,16,yellow);
+                              writeln('3. Holy Healing      (HEAL: ',skill_3b,')');
+
+                              if random_skill_bot=0 then
+                                 begin
+                                      random_skill_bot:=1;
+                                      Health_h:=Health_h-skill_1b;
+                                 end
+                              else if random_skill_bot=1 then
+                                   begin
+                                        random_skill_bot:=2;
+                                        Health_h:=Health_h-skill_2b;
+                                   end
+                              else if random_skill_bot=2 then
+                                   begin
+                                        random_skill_bot:=3;
+                                        Health_b:=Health_b+skill_3b;
+                                   end;
+                              kotak(42,17,79,19,yellow);
+                              writeln('Bot Memilih skill ',random_skill_bot);
+                         end
+
+                      else if (H_bot=2) and (turn=1)  then
+                         begin
+                              randomize;
+                              random_skill_bot:=random(3);delay(1000);
+
+                              kotak(42,5,79,7,yellow);
+                              writeln('Kamu Melawan ',hero_b);
+                              kotak(42,8,79,10,yellow);
+                              writeln('1. Sun Arrow          (DMG: ',skill_1b,')');
+                              kotak(42,11,79,13,yellow);
+                              writeln('2. Arrow Of Sun Burst (DMG: ',skill_2b,')');
+                              kotak(42,14,79,16,yellow);
+                              writeln('3. Rain Of Arrows     (DMG: ',skill_3b,')');
+
+                              if random_skill_bot=0 then
+                                 begin
+                                      random_skill_bot:=1;
+                                      Health_h:=Health_h-skill_1b;
+                                 end
+                              else if random_skill_bot=1 then
+                                   begin
+                                        random_skill_bot:=2;
+                                        Health_h:=Health_h-skill_2b;
+                                   end
+                              else if random_skill_bot=2 then
+                                   begin
+                                        random_skill_bot:=3;
+                                        Health_h:=Health_h-skill_3b;
+                                   end;
+                              kotak(42,17,79,19,yellow);
+                              writeln('Bot Memilih skill ',random_skill_bot);
+
+                         end
+
+                      else if (H_bot=3) and (turn=1)  then
+                         begin
+                              randomize;
+                              random_skill_bot:=random(3);delay(1000);
+
+                              kotak(42,5,79,7,yellow);
+                              writeln('Kamu Melawan ',hero_b);
+                              kotak(42,8,79,10,yellow);
+                              writeln('1. Whirling Slash (DMG: ',skill_1b,')');
+                              kotak(42,11,79,13,yellow);
+                              writeln('2. Dual Sword     (DMG: ',skill_2b,')');
+                              kotak(42,14,79,16,yellow);
+                              writeln('3. Heavy Sword    (DMG: ',skill_3b,')');
+
+                              if random_skill_bot=0 then
+                                 begin
+                                      random_skill_bot:=1;
+                                      Health_h:=Health_h-skill_1b;
+                                 end
+                              else if random_skill_bot=1 then
+                                   begin
+                                        random_skill_bot:=2;
+                                        Health_h:=Health_h-skill_2b;
+                                   end
+                              else if random_skill_bot=2 then
+                                   begin
+                                        random_skill_bot:=3;
+                                        Health_h:=Health_h-skill_3b;
+                                   end;
+                              kotak(42,17,79,19,yellow);
+                              writeln('Bot Memilih skill ',random_skill_bot);
+                         end;
+
+                              //Turn dan Pilih skill Hero user
+                              if (hero=1) and (turn=2)  then
+                                 begin
+                                      kotak(2,5,35,7,yellow);
+                                      writeln(nama_hero);
+                                      kotak(2,8,35,10,yellow);
+                                      writeln('1. Execute     (DMG: ',skill_1h,')');
+                                      kotak(2,11,35,13,yellow);
+                                      writeln('2. Shadow Kill (DMG: ',skill_2h,')');
+                                      kotak(2,14,35,16,yellow);
+                                      writeln('3. Soul eater  (DMG: ',skill_3h,')');
+                                      kotak(2,17,35,19,yellow);
+                                      write('Pilih Skill [1,2,3]  : ');readln(pilih_sk);
 
                                       if pilih_sk=1 then
                                          begin
-                                            hasil:=skill_1h-health_b;
-                                            writeln('Health Bot sisa ',hasil);
+                                            Health_b:=Health_b-skill_1h;
                                          end
                                       else if pilih_sk=2 then
                                            begin
-                                              hasil:=skill_2h-health_b;
-                                              writeln('Health Bot sisa ',hasil);
+                                              Health_b:=Health_b-skill_2h;
                                            end
                                       else if pilih_sk=3 then
                                            begin
-                                              hasil:=skill_3h-health_b;
-                                              writeln('Health Bot sisa ',hasil);
-                                           end;
-
+                                              Health_b:=Health_b-skill_3h;
+                                           end
+                                      else
+                                          begin
+                                               kotak(2,17,35,19,yellow);
+                                               writeln('Kamu Memasukan Pilihan yang salah!');
+                                          end;
                                  end
-                              else if hero='2' then
+
+                              else if (hero=2) and (turn=2) then
                                    begin
-                                        writeln('1. Skill 1       : love waves (DMG: ',skill_1h,')');
-                                        writeln('1. Skill 2       : Power From Nature (DMG: ',skill_2h,')');
-                                        writeln('1. Skill 3       : Holy Healing (HEAL: ',skill_3h,')');
-                                        writeln('Pilih Skill Untuk Menyerang! [1,2,3] : ');readln();
+                                        kotak(2,5,35,7,yellow);
+                                        writeln(nama_hero);
+                                        kotak(2,8,35,10,yellow);
+                                        writeln('1. love waves        (DMG: ',skill_1h,')');
+                                        kotak(2,11,35,13,yellow);
+                                        writeln('2. Power From Nature (DMG: ',skill_2h,')');
+                                        kotak(2,14,35,16,yellow);
+                                        writeln('3. Holy Healing      (HEAL: ',skill_3h,')');
+                                        kotak(2,17,35,19,yellow);
+                                        write('Pilih Skill [1,2,3]  : ');readln(pilih_sk);
+                                        if pilih_sk=1 then
+                                         begin
+                                            Health_b:=Health_b-skill_1h;
+                                         end
+                                        else if pilih_sk=2 then
+                                           begin
+                                              Health_b:=Health_b-skill_2h;
+                                           end
+                                        else if pilih_sk=3 then
+                                           begin
+                                              Health_h:=Health_h+skill_3h;
+                                           end
+                                        else
+                                            begin
+                                                 kotak(2,17,35,19,yellow);
+                                                 writeln('Kamu Memasukan Pilihan yang salah!');
+                                            end;
                                    end
 
+                              else if (hero=3) and (turn=2) then
+                                   begin
+                                        kotak(2,5,35,7,yellow);
+                                        writeln(nama_hero);
+                                        kotak(2,8,35,10,yellow);
+                                        writeln('1. Sun Arrow          (DMG: ',skill_1h,')');
+                                        kotak(2,11,35,13,yellow);
+                                        writeln('2. Arrow Of Sun Burst (DMG: ',skill_2h,')');
+                                        kotak(2,14,35,16,yellow);
+                                        writeln('3. Rain Of Arrows     (DMG: ',skill_3h,')');
+                                        kotak(2,17,35,19,yellow);
+                                        write('Pilih Skill [1,2,3]  : ');readln(pilih_sk);
+                                        if pilih_sk=1 then
+                                           begin
+                                                Health_b:=Health_b-skill_1h;
+                                           end
+                                        else if pilih_sk=2 then
+                                             begin
+                                                  Health_b:=Health_b-skill_2h;
+                                             end
+                                        else if pilih_sk=3 then
+                                             begin
+                                                  Health_b:=Health_b-skill_3h;
+                                             end
+                                        else
+                                            begin
+                                                 kotak(2,17,35,19,yellow);
+                                                 writeln('Kamu Memasukan Pilihan yang salah!');
+                                            end;
+                                   end
 
+                              else if (hero=4) and (turn=2) then
+                                   begin
+                                        kotak(2,5,35,7,yellow);
+                                        writeln(nama_hero);
+                                        kotak(2,8,35,10,yellow);
+                                        writeln('1. Whirling Slash (DMG: ',skill_1h,')');
+                                        kotak(2,11,35,13,yellow);
+                                        writeln('2. Dual Sword     (DMG: ',skill_2h,')');
+                                        kotak(2,14,35,16,yellow);
+                                        writeln('3. Heavy Sword    (DMG: ',skill_3h,')');
+                                        kotak(2,17,35,19,yellow);
+                                        write('Pilih Skill [1,2,3]  : ');readln(pilih_sk);
+                                        if pilih_sk=1 then
+                                           begin
+                                                Health_b:=Health_b-skill_1h;
+                                           end
+                                        else if pilih_sk=2 then
+                                             begin
+                                                  Health_b:=Health_b-skill_2h;
+                                             end
+                                        else if pilih_sk=3 then
+                                             begin
+                                                  Health_b:=Health_b-skill_3h;
+                                             end
+                                        else
+                                            begin
+                                                 kotak(2,17,35,19,yellow);
+                                                 writeln('Kamu Memasukan Pilihan yang salah!');
+                                            end;
+                                   end;
 
-                              {if h_bot=0 then
-                                 begin
-                                       randomize;
-                                       skill_b:=random(3);
+                      kotak(2,20,35,22,red);
+                      writeln('Sisa Health Mu  : ',Health_h);
+                      kotak(42,20,79,22,red);
+                      writeln('Sisa Health Bot : ',Health_b);
+                      kotak(2,23,79,25,blue);
+                      write('Press ANY key...');readkey;
+                      //clrscr;
 
-                                       if skill_b=0 then
-                                          begin
-                                               Health_h:=Health_h-skill_1;
-                                               writeln(Health_h);
-                                          end
-                                       else if skill_b=1 then
-                                          begin
-                                               Health_h:=Health_h-skill_2;
-                                               writeln(Health_h);
-                                          end
-                                       else if skill_b=2 then
-                                          begin
-                                               Health_h:=Health_h-skill_3;
-                                               writeln(Health_h);
-                                          end;
-
-                                 end}
-                         end
-
-
-
-                until (health_H=0) or (health_B=0);
+                until (Health_h<=0) or (Health_b<=0);
+                writeln('Pertempuran telah berakhir');
+                readln;
        end;
        //else if pilihan_M=2
 
