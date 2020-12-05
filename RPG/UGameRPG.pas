@@ -42,7 +42,7 @@ var
    pilihan_GBK:char;
    pilihan_H:char;
    pilihan_M,hero,pilih_sk:byte;
-   Health_h,skill_1h,skill_2h,skill_3h:integer;
+   coin,Health_h,skill_1h,skill_2h,skill_3h,pil_upgrade,H_Health_h:integer;
    turn:byte;
 
    //var bot
@@ -64,22 +64,22 @@ begin
 
      if Pplayer = 'B' then
         begin
-             kotak(2,1,35,3,cyan);
+             kotak(2,1,38,3,cyan);
              writeln('Anda Memilih Batu');delay(2000);
         end
      else if Pplayer = 'G' then
           begin
-               kotak(2,1,35,3,cyan);
+               kotak(2,1,38,3,cyan);
                writeln('Anda Memilih Gunting');delay(2000);
           end
      else if Pplayer = 'K' then
           begin
-               kotak(2,1,35,3,cyan);
+               kotak(2,1,38,3,cyan);
                writeln('Anda Memilih Kertas');delay(2000);
           end
      else
          begin
-              kotak(2,1,35,3,cyan);
+              kotak(2,1,38,3,cyan);
               writeln('Anda Memasukan Pilihan yang salah!');delay(2000);
          end;
      //Pilihan Komputer
@@ -95,17 +95,17 @@ begin
 
      if Pcom = 'B' then
         begin
-             kotak(42,1,79,3,cyan);
+             kotak(39,1,79,3,cyan);
              writeln('Komputer Memilih Batu');delay(2000);
         end
      else if Pcom = 'G' then
           begin
-               kotak(42,1,79,3,cyan);
+               kotak(39,1,79,3,cyan);
                writeln('Komputer Memilih Gunting');delay(2000);
           end
      else
          begin
-              kotak(42,1,79,3,cyan);
+              kotak(39,1,79,3,cyan);
               writeln('Komputer Memilih Kertas');delay(2000);
          end;
 
@@ -122,14 +122,13 @@ begin
                   kotak(2,1,79,3,cyan);
                   writeln('Komputer Lose! Kamu Win!, Kamu Akan Menyerang');delay(5000);
                   turn:=2;
-             end;
-        {else
+             end
+        else
             begin
-                 kotak(15,10,65,12,red);
-                 writeln('DRAW!!!!');delay(100);
+                 kotak(2,1,79,3,cyan);
+                 writeln('DRAW!!!!');delay(5000);
                  turn:=0;
-                 clrscr;
-            end;}
+            end;
       if Pplayer = 'G' then
         if Pcom ='B' then
            begin
@@ -142,14 +141,13 @@ begin
                   kotak(2,1,79,3,cyan);
                   writeln('Komputer Lose! Kamu Win!, Kamu Akan Menyerang');delay(5000);
                   turn:=2;
-             end;
-        {else
+             end
+        else
             begin
-                 kotak(15,10,60,12,red);
-                 writeln('DRAW!!!!');delay(100);
+                 kotak(2,1,79,3,cyan);
+                 writeln('DRAW!!!!');delay(5000);
                  turn:=0;
-                 clrscr;
-            end;}
+            end;
 
        if Pplayer = 'K' then
         if Pcom ='G' then
@@ -163,32 +161,26 @@ begin
                   kotak(2,1,79,3,cyan);
                   writeln('Komputer Lose! Kamu Win!, Kamu Akan Menyerang');delay(5000);
                   turn:=2;
-             end;
-        {else
+             end
+        else
             begin
-                 kotak(20,10,60,12,red);
-                 writeln('DRAW!!!!');delay(100);
+                 kotak(2,1,79,3,cyan);
+                 writeln('DRAW!!!!');delay(5000);
                  turn:=0;
-                 clrscr;
-            end;}
+            end;
      //clrscr;
-     until Pcom<>Pplayer;
+     until (turn=0) or (turn=1) or (turn=2) ;
 
 
 end; // End of procedure 2
 
 begin
-
      { INI BODY DARI FILE UTAMA}
-     repeat
+     coin:=0;//Ini Coin untuk upgrade skill
 
-     kotak(1,1,80,25,yellow);
-     clrscr;
-     
      repeat//repeat pilihan hero
 
      clrscr;
-
      //pilihan role hero
      kotak(1,5,30,7,yellow);
      writeln('1. Assassin');
@@ -287,11 +279,7 @@ begin
     until (pilihan_H='Y') and (hero>0);
 
     {MENU GAME}
-
-    until pilihan_H='Y';//repeat pilihan hero
-
 repeat //repeat menu
-    //Menu
 
     clrscr;
     kotak(20,1,60,3,cyan);
@@ -394,20 +382,33 @@ repeat //repeat menu
                 end;
                 kotak(20,20,60,22,cyan);
                 write('Tekan Enter Untuk Melanjutkan...');readln;
-
                 clrscr;
 
                 {MULAI FIGHT}
+                H_Health_h:=Health_h;// Variabel tambahan utk Health
                 repeat
+                      kotak(2,20,35,22,red);
+                      writeln('Health Mu  : ',H_Health_h);
+                      kotak(42,20,79,22,red);
+                      writeln('Health Bot : ',Health_b);
                       kotak(2,1,35,3,cyan);
                       write('Masukan Pilihan [G,B,K] : ');readln(pilihan_GBK);
                       GBK(pilihan_GBK);
 
-                      //Turn dan random skill Hero Bot
+                      // Pengkondisian jika DRAW user pilih lagi
+                      if turn=0 then
+                         begin
+                              kotak(2,1,35,3,cyan);
+                              write('Masukan Pilihan [G,B,K] : ');readln(pilihan_GBK);
+                              GBK(pilihan_GBK);
+                         end;
+
+                      //if pilihan MENU Ke-1
+                      // Pengkondisian Turn dan random skill Hero Bot
                       if (H_bot=0) and (turn=1)  then
                          begin
                               randomize;
-                              random_skill_bot:=random(3);delay(1000);
+                              random_skill_bot:=random(3);
 
                               kotak(42,5,79,7,yellow);
                               writeln(hero_b);
@@ -418,22 +419,20 @@ repeat //repeat menu
                               kotak(42,14,79,16,yellow);
                               writeln('3. Soul eater  (DMG: ',skill_3b,')');
 
-
-
                               if random_skill_bot=0 then
                                  begin
                                       random_skill_bot:=1;
-                                      Health_h:=Health_h-skill_1b;
+                                      H_Health_h:=H_Health_h-skill_1b;
                                  end
                               else if random_skill_bot=1 then
                                    begin
                                         random_skill_bot:=2;
-                                        Health_h:=Health_h-skill_2b;
+                                        H_Health_h:=H_Health_h-skill_2b;
                                    end
                               else if random_skill_bot=2 then
                                    begin
                                         random_skill_bot:=3;
-                                        Health_h:=Health_h-skill_3b;
+                                        H_Health_h:=H_Health_h-skill_3b;
                                    end;
                               kotak(42,17,79,19,yellow);
                               writeln('Bot Memilih skill ',random_skill_bot);
@@ -442,13 +441,13 @@ repeat //repeat menu
                       else if (H_bot=1) and (turn=1)  then
                          begin
                               randomize;
-                              random_skill_bot:=random(3);delay(1000);
+                              random_skill_bot:=random(3);
 
                               kotak(42,5,79,7,yellow);
                               writeln('Kamu Melawan ',hero_b);
                               kotak(42,8,79,10,yellow);
                               writeln('1. love waves        (DMG: ',skill_1b,')');
-                              kotak(42,11,13,13,yellow);
+                              kotak(42,11,79,13,yellow);
                               writeln('2. Power From Nature (DMG: ',skill_2b,')');
                               kotak(42,14,79,16,yellow);
                               writeln('3. Holy Healing      (HEAL: ',skill_3b,')');
@@ -456,12 +455,12 @@ repeat //repeat menu
                               if random_skill_bot=0 then
                                  begin
                                       random_skill_bot:=1;
-                                      Health_h:=Health_h-skill_1b;
+                                      H_Health_h:=H_Health_h-skill_1b;
                                  end
                               else if random_skill_bot=1 then
                                    begin
                                         random_skill_bot:=2;
-                                        Health_h:=Health_h-skill_2b;
+                                        H_Health_h:=H_Health_h-skill_2b;
                                    end
                               else if random_skill_bot=2 then
                                    begin
@@ -475,7 +474,7 @@ repeat //repeat menu
                       else if (H_bot=2) and (turn=1)  then
                          begin
                               randomize;
-                              random_skill_bot:=random(3);delay(1000);
+                              random_skill_bot:=random(3);
 
                               kotak(42,5,79,7,yellow);
                               writeln('Kamu Melawan ',hero_b);
@@ -489,27 +488,26 @@ repeat //repeat menu
                               if random_skill_bot=0 then
                                  begin
                                       random_skill_bot:=1;
-                                      Health_h:=Health_h-skill_1b;
+                                      H_Health_h:=H_Health_h-skill_1b;
                                  end
                               else if random_skill_bot=1 then
                                    begin
                                         random_skill_bot:=2;
-                                        Health_h:=Health_h-skill_2b;
+                                        H_Health_h:=H_Health_h-skill_2b;
                                    end
                               else if random_skill_bot=2 then
                                    begin
                                         random_skill_bot:=3;
-                                        Health_h:=Health_h-skill_3b;
+                                        H_Health_h:=H_Health_h-skill_3b;
                                    end;
                               kotak(42,17,79,19,yellow);
                               writeln('Bot Memilih skill ',random_skill_bot);
-
                          end
 
                       else if (H_bot=3) and (turn=1)  then
                          begin
                               randomize;
-                              random_skill_bot:=random(3);delay(1000);
+                              random_skill_bot:=random(3);
 
                               kotak(42,5,79,7,yellow);
                               writeln('Kamu Melawan ',hero_b);
@@ -523,23 +521,23 @@ repeat //repeat menu
                               if random_skill_bot=0 then
                                  begin
                                       random_skill_bot:=1;
-                                      Health_h:=Health_h-skill_1b;
+                                      H_Health_h:=H_Health_h-skill_1b;
                                  end
                               else if random_skill_bot=1 then
                                    begin
                                         random_skill_bot:=2;
-                                        Health_h:=Health_h-skill_2b;
+                                        H_Health_h:=H_Health_h-skill_2b;
                                    end
                               else if random_skill_bot=2 then
                                    begin
                                         random_skill_bot:=3;
-                                        Health_h:=Health_h-skill_3b;
+                                        H_Health_h:=H_Health_h-skill_3b;
                                    end;
                               kotak(42,17,79,19,yellow);
                               writeln('Bot Memilih skill ',random_skill_bot);
                          end;
 
-                              //Turn dan Pilih skill Hero user
+                              //Pengkondisian Turn dan Pilih skill Hero user
                               if (hero=1) and (turn=2)  then
                                  begin
                                       kotak(2,5,35,7,yellow);
@@ -571,7 +569,6 @@ repeat //repeat menu
                                                writeln('Kamu Memasukan Pilihan yang salah!');
                                           end;
                                  end
-
 
                               else if (hero=2) and (turn=2) then
                                    begin
@@ -666,20 +663,35 @@ repeat //repeat menu
                                             end;
                                    end;
 
-                      kotak(2,20,35,22,red);
-                      writeln('Sisa Health Mu  : ',Health_h);
-                      kotak(42,20,79,22,red);
-                      writeln('Sisa Health Bot : ',Health_b);
                       kotak(2,23,79,25,blue);
                       write('Press ANY key...');readkey;
-                      //clrscr;
 
-                until (Health_h<=0) or (Health_b<=0);
-                writeln('Pertempuran telah berakhir');
-                readln;
+                until (H_Health_h<=0) or (Health_b<=0);
+                clrscr;//clearscreen layar dari setelah fight
 
-       //else if pilihan_M=2
-       end //end of pilihan menu = 1
+                //Pengkondisian Setelah Pertempuran untuk mendapatkan Coin/tidak
+                if Health_b<=0 then
+                   begin
+                        coin:=coin+1;
+                        kotak(27,8,54,10,red);
+                        writeln('Pertempuran telah berakhir');
+                        kotak(28,11,52,13,red);
+                        writeln('Kamu Mendapatkan 1 Coin');
+                        kotak(29,14,51,16,red);
+                        write('Press ENTER please...');readln;
+                        clrscr;
+                   end
+                else if H_Health_h<=0 then
+                   begin
+                        kotak(27,11,54,13,red);
+                        writeln('Pertempuran telah berakhir');
+                        kotak(29,14,51,16,red);
+                        write('Press ENTER please...');readln;
+                        clrscr;
+                   end;
+       end//end of pilihan menu = 1
+
+       //else if pilihan MENU Ke-2
        else if pilihan_M=2 then
             begin
                  clrscr;
@@ -694,20 +706,102 @@ repeat //repeat menu
                  kotak(20,13,60,15,cyan);
                  writeln('Damage Skill 3   :',skill_3h);
                  kotak(20,16,60,18,cyan);
-                 writeln('*Tips Upgrade Hero Mu Agar Lebih Kuat:)');
+                 writeln('Coin Upgrade : ',coin);
                  kotak(20,19,60,21,cyan);
-                 write('Tekan Enter Untuk Melanjutkan...');
-                 readln;
+                 writeln('*Tips Upgrade Hero Mu Agar Lebih Kuat:)');
+                 kotak(20,22,60,24,cyan);
+                 write('Tekan Enter Untuk Melanjutkan...');readln;
                  clrscr;
-       end; //end of pilihan menu = 2
+       end //end of pilihan menu = 2
 
-      {else if pilihan_M=3 then
+      //else if pilihan MENU Ke-3
+      else if pilihan_M=3 then
            begin
 
-           end;}
+           repeat
+           clrscr;
+           kotak(20,4,60,6,cyan);
+           writeln('1. Upgrade Health (+100)');
+           kotak(20,7,60,9,cyan);
+           writeln('2. Upgrade Skill 1 (+50)');
+           kotak(20,10,60,12,cyan);
+           writeln('3. Upgrade Skill 2 (+50)');
+           kotak(20,13,60,15,cyan);
+           writeln('4. Upgrade Skill 3 (+50)');
+           kotak(20,16,60,18,cyan);
+           writeln('5. Back to Menu');
+           kotak(20,19,60,21,cyan);
+           write('Masukan Pilihan : ');readln(pil_upgrade);
 
-until pilihan_M=4; //repeat pilihan menu
+           if (pil_upgrade=1) and (coin>0) then
+              begin
+                   Health_h:=Health_h+100;
 
-readln;
+                   kotak(20,19,60,21,cyan);
+                   writeln('health telah di Upgrade');
+                   kotak(20,22,60,24,cyan);
+                   write('Tekan Enter Untuk Melanjutkan...');readln;
+
+                   coin:=coin-1;
+              end
+           else if (pil_upgrade=2) and (coin>0) then
+                begin
+                     skill_1h:=skill_1h+50;
+
+                     kotak(20,19,60,21,cyan);
+                     writeln('Skill 1 telah di Upgrade');
+                     kotak(20,22,60,24,cyan);
+                     write('Tekan Enter Untuk Melanjutkan...');readln;
+
+                     coin:=coin-1;
+                end
+           else if (pil_upgrade=3) and (coin>0) then
+                begin
+                     skill_2h:=skill_2h+50;
+
+                     kotak(20,19,60,21,cyan);
+                     writeln('Skill 2 telah di Upgrade');
+                     kotak(20,22,60,24,cyan);
+                     write('Tekan Enter Untuk Melanjutkan...');readln;
+
+                     coin:=coin-1;
+                end
+           else if (pil_upgrade=4) and (coin>0) then
+                begin
+                     skill_3h:=skill_3h+50;
+
+                     kotak(20,19,60,21,cyan);
+                     writeln('Skill 3 telah di Upgrade');
+                     kotak(20,22,60,24,cyan);
+                     write('Tekan Enter Untuk Melanjutkan...');readln;
+
+                     coin:=coin-1;
+                end
+           else if pil_upgrade=5 then
+                begin
+                     clrscr;
+                end
+
+           else if (pil_upgrade>5) or (pil_upgrade<1) then
+                 begin
+                      kotak(20,19,60,21,cyan);
+                      writeln('Kamu Memasukan Pilihan yang salah');
+                      kotak(20,22,60,24,cyan);
+                      write('Tekan Enter Untuk Melanjutkan...');readln;
+                 end
+           else
+               begin
+                    kotak(20,19,60,21,cyan);
+                    writeln('Coin untuk upgrade kurang :(');
+                    kotak(20,22,60,24,cyan);
+                    write('Tekan Enter Untuk Melanjutkan...');readln;
+               end;
+
+           until pil_upgrade=5;
+           end;
+
+
+until (pilihan_M=4) or (pilihan_M>4) or (pilihan_M<1); //repeat pilihan menu
+
 end.
 
