@@ -1,4 +1,4 @@
-program CMD_Heroes;
+ program CMD_Heroes;
 uses crt;
 
 procedure kotak(x1,y1,x2,y2,latar:byte);
@@ -42,7 +42,7 @@ var
    pilihan_GBK:char;
    pilihan_H:char;
    x,pilihan_M,hero,pilih_sk:byte;
-   coin,Health_h,mana_h,skill_1h,skill_2h,skill_3h,mana_skill_1h,mana_skill_2h,mana_skill_3h,pil_upgrade,H_Health_h,H_mana_h:integer;
+   t,j,coin,Health_h,mana_h,skill_1h,skill_2h,skill_3h,mana_skill_1h,mana_skill_2h,mana_skill_3h,pil_upgrade,H_Health_h,H_mana_h:integer;
    turn:byte;
 
    //var bot
@@ -170,18 +170,49 @@ begin
             end;
      //clrscr;
      until (turn=0) or (turn=1) or (turn=2) ;
-
-
 end; // End of procedure 2
 
 begin
      { INI BODY DARI FILE UTAMA}
      coin:=5;//Ini Coin untuk upgrade skill
 
-     repeat//repeat pilihan hero
-
+     kotak(2,2,79,24,yellow);
      clrscr;
+     kotak(2,2,79,24,cyan);
+     gotoxy(30,12);
+     write('Selamat Datang Heroes');
+     delay(2000);
+     clrscr;
+     kotak(2,2,79,24,yellow);
+     clrscr;
+     kotak(2,2,79,24,cyan);
+     gotoxy(30,12);
+     write('Welcome to CMD HEROES');
+     delay(3000);
+     clrscr;
+     gotoxy(37,12);
+     write('Loading');
+     j:=38;
+     for t:=1 to 3 do
+         begin
+              j:=j+1;
+              gotoxy(j,13);
+              write('*');
+              delay(900);
+         end;
+     {gotoxy(,25)
+     writeln('Tekan Enter Untuk Melanjutkan');
+     readln; }
+     delay(2000);
+     clrscr;
+
+     repeat//repeat pilihan hero
+     kotak(1,1,80,25,yellow);
+     clrscr;
+
      //pilihan role hero
+     kotak(1,1,80,4,cyan);
+     writeln('__________________________________CMD Heroes__________________________________');
      kotak(1,5,30,7,yellow);
      writeln('1. Assassin');
      kotak(1,8,30,10,yellow);
@@ -926,4 +957,28 @@ repeat //repeat menu
 until (pilihan_M=4) or (pilihan_M>4) or (pilihan_M<1); //repeat pilihan menu
 
 end.
-
+           
+clrscr;
+gotoxy(34,12);
+write('Good Bye :)');
+delay(900);
+clrscr;
+kotak(1,1,80,25,black);
+clrscr;
+gotoxy(36,11);
+write('credit : ');
+delay(1500);
+gotoxy(27,12);
+write('Created by San and Vikri');
+delay(1500);
+gotoxy(22,13);
+write('ig: @badasserysan @vikrifrediansyah');
+delay(2000);
+gotoxy(33,14);
+write('Copyright 2020');
+delay(1500);
+clrscr;
+gotoxy(39,13);
+write(':)');
+delay(200);
+end.
