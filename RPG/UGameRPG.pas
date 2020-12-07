@@ -45,7 +45,6 @@ var
    t,j,coin,Health_h,skill_1h,skill_2h,skill_3h,pil_upgrade,H_Health_h:integer;
    turn:byte;
 
-
    //var bot
    Health_b,skill_1b,skill_2b,skill_3b:integer;
    random_skill_bot,H_bot:byte;
@@ -171,8 +170,6 @@ begin
             end;
      //clrscr;
      until (turn=0) or (turn=1) or (turn=2) ;
-
-
 end; // End of procedure 2
 
 begin
@@ -207,17 +204,12 @@ begin
      delay(2000);
      clrscr;
 
-
-
-
-
      coin:=0;//Ini Coin untuk upgrade skill
 
      repeat//repeat pilihan hero
-
-     clrscr;
      kotak(1,1,80,25,yellow);
      clrscr;
+
      //pilihan role hero
      kotak(1,1,80,4,cyan);
      writeln('__________________________________CMD Heroes__________________________________');
@@ -233,7 +225,6 @@ begin
      //input user
      kotak(1,17,30,19,yellow);
      write('Pilih Hero Mu [1,2,3,4] : ');readln(hero);
-
 
      //Pilihan Hero User
      if hero=1 then
@@ -787,7 +778,7 @@ repeat //repeat menu
            else if (pil_upgrade=2) and (coin>0) then
                 begin
                      skill_1h:=skill_1h+50;
-
+                     
                      kotak(20,19,60,21,cyan);
                      writeln('Skill 1 telah di Upgrade');
                      kotak(20,22,60,24,cyan);
@@ -820,8 +811,7 @@ repeat //repeat menu
            else if pil_upgrade=5 then
                 begin
                      clrscr;
-                end
-
+                end 
            else if (pil_upgrade>5) or (pil_upgrade<1) then
                  begin
                       kotak(20,19,60,21,cyan);
@@ -842,6 +832,9 @@ repeat //repeat menu
 
 
 until (pilihan_M=4) or (pilihan_M>4) or (pilihan_M<1); //repeat pilihan menu
+
+end.
+           
 clrscr;
 gotoxy(34,12);
 write('Good Bye :)');
