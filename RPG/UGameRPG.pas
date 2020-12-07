@@ -956,8 +956,6 @@ repeat //repeat menu
 
 until (pilihan_M=4) or (pilihan_M>4) or (pilihan_M<1); //repeat pilihan menu
 
-end.
-           
 clrscr;
 gotoxy(34,12);
 write('Good Bye :)');
