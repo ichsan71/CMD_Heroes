@@ -391,6 +391,7 @@ repeat //repeat menu
                                         random_skill_bot:=3;
                                         Health_b:=Health_b+skill_3b;
                                         H_mana_b:=H_mana_b-mana_skill_3b;
+                                        heal();
                                    end;
 
                               until (x=1) or (x=2) or (x=3);
@@ -556,6 +557,7 @@ repeat //repeat menu
                                               x:=3;
                                               H_Health_h:=H_Health_h+skill_3h;
                                               H_mana_h:=H_mana_h-mana_skill_3h;
+                                              heal();
                                            end
                                         else
                                           begin

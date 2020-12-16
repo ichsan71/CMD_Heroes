@@ -4,6 +4,7 @@ interface
 uses crt;
 procedure swordH();
 procedure swordB();
+procedure heal();
 
 implementation
 
@@ -118,7 +119,47 @@ begin
 
      a:=a-1;
      until a=9;
-
+     clrscr;
 end; //end of procedure swordB
+
+//Procedure Heal
+procedure heal();
+var
+   i,x,y:byte;
+begin
+     clrscr;
+     x:=35;
+     y:=3;
+     gotoXY(40,5);
+     writeln('*');
+     gotoXY(39,6);
+     writeln('***');
+     gotoXY(40,7);
+     writeln('|');
+     gotoXY(38,7);
+     writeln('--');
+     gotoXY(41,7);
+     writeln('--');
+     gotoXY(39,8);
+     writeln('/');
+     gotoXY(41,8);
+     writeln('\');
+     gotoXY(38,9);
+     writeln('/');
+     gotoXY(42,9);
+     writeln('\');
+     for i:=1 to 2 do
+         begin
+              gotoXY(x,7);
+              writeln('+');delay(1000);
+              x:=x+10;
+
+              gotoXY(40,y);
+              writeln('+');delay(1000);
+              y:=y+8;
+         end;
+     clrscr;
+end;//end of procedure heal
+
 end. //end of unit
 

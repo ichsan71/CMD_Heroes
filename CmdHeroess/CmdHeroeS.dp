@@ -9,7 +9,7 @@ IsDll=0
 Icon=C:\Dev-Pas\Icon\Mainicon.ico
 [Unit1]
 FileName=C:\Users\San\Documents\KUSMANG\GameDev\CmdHeroess\UCmdHeroes.pas
-FileTime=1368430648
+FileTime=1368436440
 [Unit2]
 FileName=C:\Users\San\Documents\KUSMANG\GameDev\CmdHeroess\ktk.pas
 [Unit3]
@@ -17,4 +17,4 @@ FileName=C:\Users\San\Documents\KUSMANG\GameDev\CmdHeroess\suit.pas
 FileTime=1368420439
 [Unit4]
 FileName=C:\Users\San\Documents\KUSMANG\GameDev\CmdHeroess\pedang.pas
-FileTime=1368430635
+FileTime=1368436546
