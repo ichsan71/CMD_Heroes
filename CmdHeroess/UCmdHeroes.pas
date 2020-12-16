@@ -1,42 +1,8 @@
- program CMD_Heroes;
-uses crt;
-
-procedure kotak(x1,y1,x2,y2,latar:byte);
-var
-   i:byte;
-
-begin
-     textbackground(latar);
-     window(x1,y1,x2,y2);// seting windows aktif
-     clrscr;// clear screen sesuai ukuran windows
-     window(1,1,80,25);// kembalikan ke windows biasa
-
-     gotoxy(x1,y1);write(#218);
-     for i:=x1+1 to x2-1 do
-     begin
-          gotoxy(i,y1);write(#196);
-     end;
-     gotoxy(x2,y1);write(#191);
-     for i:=y1+1 to y2-1 do
-     begin
-          gotoxy(x2,i);write(#179);
-     end;
-     gotoxy(x2,y2);write(#217);
-     for i:=x2-1 downto x1+1  do
-     begin
-          gotoxy(i,y2);write(#196);
-     end;
-     gotoxy(x1,y2);write(#192);
-     for i:=y2-1 downto y1+1  do
-     begin
-          gotoxy(x1,i);write(#179);
-     end;
-
-end; // end of procedure 1
+program CMD_HEROES;
+uses ktk,suit,pedang,crt;
 
 var
    { INI ADALAH VAR DARI FILE UTAMA }
-
    //var User
    nama_hero:string;
    pilihan_GBK:char;
@@ -50,131 +16,9 @@ var
    random_skill_bot,H_bot:byte;
    hero_b:string;
 
-//procedure Gunting kertas Batu
-procedure GBK(Pplayer:char);
-var
-   {INI VAR PROCEDURE 2}
-   Pcom:char;
-   angka:byte;
 begin
-     repeat
-
-     //Input user
-     Pplayer:=upcase(Pplayer);
-
-     if Pplayer = 'B' then
-        begin
-             kotak(2,1,39,3,cyan);
-             writeln('Anda Memilih Batu');delay(2000);
-        end
-     else if Pplayer = 'G' then
-          begin
-               kotak(2,1,39,3,cyan);
-               writeln('Anda Memilih Gunting');delay(2000);
-          end
-     else if Pplayer = 'K' then
-          begin
-               kotak(2,1,39,3,cyan);
-               writeln('Anda Memilih Kertas');delay(2000);
-          end
-     else
-         begin
-              kotak(2,1,39,3,cyan);
-              writeln('Anda Memasukan Pilihan yang salah!');delay(2000);
-         end;
-     //Pilihan Komputer
-     randomize;
-     angka:=random(3);
-
-     if angka = 0 then
-        Pcom:='B'
-     else if angka = 1 then
-          Pcom:='G'
-     else
-         Pcom:='K';
-
-     if Pcom = 'B' then
-        begin
-             kotak(40,1,79,3,cyan);
-             writeln('Komputer Memilih Batu');delay(2000);
-        end
-     else if Pcom = 'G' then
-          begin
-               kotak(40,1,79,3,cyan);
-               writeln('Komputer Memilih Gunting');delay(2000);
-          end
-     else
-         begin
-              kotak(40,1,79,3,cyan);
-              writeln('Komputer Memilih Kertas');delay(2000);
-         end;
-
-     //Peraturan
-     if Pplayer = 'B' then
-        if Pcom ='K' then
-           begin
-                kotak(2,1,79,3,cyan);
-                writeln('Komputer Win! Kamu Lose!, Komputer Akan Menyerang');delay(5000);
-                turn:=1;
-           end
-        else if Pcom ='G' then
-             begin
-                  kotak(2,1,79,3,cyan);
-                  writeln('Komputer Lose! Kamu Win!, Kamu Akan Menyerang');delay(5000);
-                  turn:=2;
-             end
-        else
-            begin
-                 kotak(2,1,79,3,cyan);
-                 writeln('DRAW!!!!');delay(5000);
-                 turn:=0;
-            end;
-      if Pplayer = 'G' then
-        if Pcom ='B' then
-           begin
-                kotak(2,1,79,3,cyan);
-                writeln('Komputer Win! Kamu Lose!, Komputer Akan Menyerang');delay(5000);
-                turn:=1;
-           end
-        else if Pcom ='K' then
-             begin
-                  kotak(2,1,79,3,cyan);
-                  writeln('Komputer Lose! Kamu Win!, Kamu Akan Menyerang');delay(5000);
-                  turn:=2;
-             end
-        else
-            begin
-                 kotak(2,1,79,3,cyan);
-                 writeln('DRAW!!!!');delay(5000);
-                 turn:=0;
-            end;
-
-       if Pplayer = 'K' then
-        if Pcom ='G' then
-           begin
-                kotak(2,1,79,3,cyan);
-                writeln('Komputer Win! Kamu Lose!, Komputer Akan Menyerang');delay(5000);
-                turn:=1;
-           end
-        else if Pcom ='B' then
-             begin
-                  kotak(2,1,79,3,cyan);
-                  writeln('Komputer Lose! Kamu Win!, Kamu Akan Menyerang');delay(5000);
-                  turn:=2;
-             end
-        else
-            begin
-                 kotak(2,1,79,3,cyan);
-                 writeln('DRAW!!!!');delay(5000);
-                 turn:=0;
-            end;
-     //clrscr;
-     until (turn=0) or (turn=1) or (turn=2) ;
-end; // End of procedure 2
-
-begin
-     { INI BODY DARI FILE UTAMA}
-     coin:=5;//Ini Coin untuk upgrade skill
+     { INI BODY DARI FILE UTAMA }
+     coin:=0;//Ini Coin untuk upgrade skill
 
      kotak(2,2,79,24,yellow);
      clrscr;
@@ -458,14 +302,14 @@ repeat //repeat menu
                       writeln('Health Bot : ',Health_b,', Mana  : ',H_mana_b);
                       kotak(2,1,79,3,cyan);
                       write('Masukan Pilihan [G,B,K] : ');readln(pilihan_GBK);
-                      GBK(pilihan_GBK);
+                      GBK(pilihan_GBK,turn);
 
                       // Pengkondisian jika DRAW user pilih lagi
                       if turn=0 then
                          begin
                               kotak(2,1,79,3,cyan);
                               write('Masukan Pilihan [G,B,K] : ');readln(pilihan_GBK);
-                              GBK(pilihan_GBK);
+                              GBK(pilihan_GBK,turn);
                          end;
 
                       //if pilihan MENU Ke-1
@@ -631,6 +475,7 @@ repeat //repeat menu
                                         random_skill_bot:=3;
                                         H_Health_h:=H_Health_h-skill_3b;
                                         H_mana_b:=H_mana_b-mana_skill_3b;
+                                        swordB();
                                    end;
 
                               until (x=1) or (x=2) or (x=3);
@@ -675,7 +520,7 @@ repeat //repeat menu
                                           begin
                                                x:=0;
                                                kotak(2,17,39,19,yellow);
-                                               write('Not enough Mana, Press ENTER');readln;
+                                               write('Not enough Mana, Press ENTER');sound(1); readln;
                                           end;
                                       until (x=1) or (x=2) or (x=3);
                                  end
@@ -716,7 +561,7 @@ repeat //repeat menu
                                           begin
                                                x:=0;
                                                kotak(2,17,39,19,yellow);
-                                               write('Not enough Mana, Press ENTER');readln;
+                                               write('Not enough Mana, Press ENTER');sound(1);readln;
                                           end;
                                         until (x=1) or (x=2) or (x=3);
                                    end
@@ -757,7 +602,7 @@ repeat //repeat menu
                                           begin
                                                x:=0;
                                                kotak(2,17,39,19,yellow);
-                                               write('Not enough Mana, Press ENTER');readln;
+                                               write('Not enough Mana, Press ENTER');sound(1);readln;
                                           end;
                                         until (x=1) or (x=2) or (x=3);
                                    end
@@ -790,6 +635,8 @@ repeat //repeat menu
                                            end
                                         else if (pilih_sk=3) and (H_mana_h>=60) then
                                            begin
+                                              kotak(1,4,80,12,red);
+                                              swordh();
                                               x:=3;
                                               Health_b:=Health_b-skill_3h;
                                               H_mana_h:=H_mana_h-mana_skill_3h;
@@ -798,7 +645,7 @@ repeat //repeat menu
                                           begin
                                                x:=0;
                                                kotak(2,17,39,19,yellow);
-                                               write('Not enough Mana, Press ENTER');readln;
+                                               write('Not enough Mana, Press ENTER');sound(1);readln;
                                           end;
                                         until (x=1) or (x=2) or (x=3);
                                    end;
@@ -945,7 +792,7 @@ repeat //repeat menu
            else
                begin
                     kotak(20,22,60,24,cyan);
-                    writeln('Coin untuk upgrade kurang :(');delay(2000);
+                    writeln('Coin untuk upgrade kurang :(');sound(1);delay(2000);
                     kotak(20,22,60,24,cyan);
                     write('Tekan Enter Untuk Melanjutkan...');readln;
                end;
